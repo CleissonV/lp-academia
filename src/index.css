@@ -1,0 +1,55 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #050505; color: #f8f9fa; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+@keyframes pulse-fire {
+  0%, 100% { box-shadow: 0 0 20px rgba(239,35,60,0.3); }
+  50% { box-shadow: 0 0 40px rgba(239,35,60,0.6), 0 0 80px rgba(249,115,22,0.2); }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fire-btn {
+  background: linear-gradient(135deg, #ef233c, #f97316);
+  transition: all 0.3s ease;
+}
+.fire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(239,35,60,0.4);
+}
+
+.program-card {
+  border: 1px solid #1a1a1a;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.program-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ef233c08, #f9731608);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.program-card:hover {
+  border-color: #ef233c;
+  transform: translateY(-4px);
+}
+.program-card:hover::before { opacity: 1; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#ef233c, #f97316); border-radius: 2px; }
