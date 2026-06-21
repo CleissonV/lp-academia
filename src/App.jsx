@@ -171,6 +171,12 @@ const ProgramCard = ({ p, i }) => {
   )
 }
 
+const trainerPhotos = [
+  'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1627483297886-49710ae1fc22?w=400&q=80&auto=format&fit=crop',
+]
+
 const TrainerCard = ({ trainer, i }) => {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
@@ -180,19 +186,46 @@ const TrainerCard = ({ trainer, i }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.2 }}
-      className="program-card bg-[#050505] p-8 text-center"
+      className="program-card bg-[#050505] text-center overflow-hidden"
     >
-      <div
-        className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center border border-[#1a1a1a]"
-        style={{ background: `${trainer.color}15` }}
-      >
-        <trainer.icon size={48} style={{ color: trainer.color }} />
+      <img
+        src={trainerPhotos[i % trainerPhotos.length]}
+        alt={trainer.name}
+        className="w-full h-64 object-cover object-top"
+      />
+      <div className="p-8">
+        <h3 className="font-display font-bold text-2xl text-white mb-1">{trainer.name}</h3>
+        <p className="font-sans font-medium text-sm mb-1" style={{ color: trainer.color }}>
+          {trainer.spec}
+        </p>
+        <p className="text-gray-700 text-xs font-sans">{trainer.cref} · {trainer.years} experiência</p>
       </div>
-      <h3 className="font-display font-bold text-2xl text-white mb-1">{trainer.name}</h3>
-      <p className="font-sans font-medium text-sm mb-1" style={{ color: trainer.color }}>
-        {trainer.spec}
-      </p>
-      <p className="text-gray-700 text-xs font-sans">{trainer.cref} · {trainer.years} experiência</p>
+    </motion.div>
+  )
+}
+
+const gymImages = [
+  'https://images.unsplash.com/photo-1661301057249-bd008eebd06a?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1637430308606-86576d8fef3c?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1671631630555-1cb3ffa7dfe6?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80&auto=format&fit=crop',
+]
+
+const GymImage = ({ src, index }) => {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ delay: index * 0.08, duration: 0.5 }}
+      className="relative overflow-hidden group"
+    >
+      <img src={src} alt="gym" className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+      <div className="absolute inset-0 bg-[#ef233c]/0 group-hover:bg-[#ef233c]/20 transition-all duration-300" />
     </motion.div>
   )
 }
@@ -327,11 +360,13 @@ export default function App() {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse at 60% 50%, rgba(239,35,60,0.08) 0%, transparent 60%)' }}
-        />
-        {/* Grid pattern */}
+        <video
+          autoPlay loop muted playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+        >
+          <source src="https://videos.pexels.com/video-files/29546708/29546708-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/60 to-[#050505]" />
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -526,6 +561,32 @@ export default function App() {
         </div>
       </section>
 
+      {/* Gallery */}
+      <section className="py-32 max-w-7xl mx-auto px-6">
+        <div className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 mb-3"
+          >
+            <div className="w-8 h-0.5 bg-[#ef233c]" />
+            <span className="text-[#ef233c] text-xs tracking-[0.4em] uppercase font-sans">Nossa Estrutura</span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-display font-black text-6xl md:text-8xl text-white tracking-tighter"
+          >
+            GALERIA
+          </motion.h2>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {gymImages.map((src, i) => <GymImage key={i} src={src} index={i} />)}
+        </div>
+      </section>
+
       {/* Pricing */}
       <section id="planos" className="py-32 max-w-7xl mx-auto px-6">
         <div className="mb-12">
@@ -629,6 +690,11 @@ export default function App() {
         className="py-24 relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #ef233c, #f97316)' }}
       >
+        <img
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
         <div
           className="absolute inset-0 opacity-10"
           style={{
