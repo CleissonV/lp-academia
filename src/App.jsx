@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa'
 import { MdFitnessCenter, MdSportsGymnastics } from 'react-icons/md'
 import { GiMuscleUp, GiWeightLiftingUp, GiBiceps } from 'react-icons/gi'
+import { LuZap, LuDumbbell, LuActivity, LuSwords, LuPersonStanding, LuFlame } from 'react-icons/lu'
 
 const useCounter = (target, duration = 2000, inView) => {
   const [count, setCount] = useState(0)
@@ -52,7 +53,7 @@ const programs = [
     name: 'HIIT Extremo',
     level: 'Avançado',
     duration: '45 min',
-    emoji: '⚡',
+    icon: LuZap,
     desc: 'Treino intervalado de alta intensidade que queima até 800 cal/sessão. Máxima entrega, máximo resultado.',
     schedule: 'Seg/Qua/Sex · 6h, 12h, 18h',
   },
@@ -60,7 +61,7 @@ const programs = [
     name: 'Musculação Performance',
     level: 'Todos os níveis',
     duration: '60 min',
-    emoji: '💪',
+    icon: LuDumbbell,
     desc: 'Ganho de massa com periodização científica. Protocolos individualizados com acompanhamento constante.',
     schedule: 'Diário · 6h às 22h',
   },
@@ -68,7 +69,7 @@ const programs = [
     name: 'Functional Training',
     level: 'Intermediário',
     duration: '50 min',
-    emoji: '🏋️',
+    icon: LuActivity,
     desc: 'Movimentos funcionais que melhoram força, equilíbrio e mobilidade. Treino completo para vida real.',
     schedule: 'Ter/Qui/Sáb · 7h, 13h, 19h',
   },
@@ -76,7 +77,7 @@ const programs = [
     name: 'MMA & Artes Marciais',
     level: 'Todos os níveis',
     duration: '60 min',
-    emoji: '🥊',
+    icon: LuSwords,
     desc: 'Boxe, Muay Thai e BJJ. Condicionamento físico máximo aliado à técnica de luta e autodefesa.',
     schedule: 'Ter/Qui/Sáb · 7h, 19h',
   },
@@ -84,7 +85,7 @@ const programs = [
     name: 'Yoga & Mobilidade',
     level: 'Iniciante',
     duration: '60 min',
-    emoji: '🧘',
+    icon: LuPersonStanding,
     desc: 'Equilíbrio, flexibilidade e recuperação ativa. Complemento essencial para qualquer atleta.',
     schedule: 'Seg/Qua/Sex · 7h, 20h',
   },
@@ -92,7 +93,7 @@ const programs = [
     name: 'Bootcamp Outdoor',
     level: 'Avançado',
     duration: '60 min',
-    emoji: '🔥',
+    icon: LuFlame,
     desc: 'Treino ao ar livre de alta intensidade. Supera limites em grupo, com a energia da natureza.',
     schedule: 'Sáb/Dom · 7h',
   },
@@ -158,7 +159,7 @@ const ProgramCard = ({ p, i }) => {
       className="program-card bg-[#0d0d0d] p-8 cursor-default"
     >
       <div className="flex items-center justify-between mb-4">
-        <span className="text-3xl">{p.emoji}</span>
+        <span className="inline-flex w-12 h-12 items-center justify-center bg-[#ef233c]/10 text-[#ef233c]"><p.icon size={24} strokeWidth={1.8} /></span>
         <span className="text-[#ef233c] text-xs font-display font-bold tracking-widest uppercase">{p.level}</span>
       </div>
       <h3 className="font-display font-black text-2xl text-white mb-2">{p.name}</h3>
@@ -362,9 +363,10 @@ export default function App() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <video
           autoPlay loop muted playsInline
+          poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80&auto=format&fit=crop"
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         >
-          <source src="https://videos.pexels.com/video-files/29546708/29546708-hd_1920_1080_30fps.mp4" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/52079/52079-1080.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/60 to-[#050505]" />
         <div
