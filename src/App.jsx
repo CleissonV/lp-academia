@@ -206,11 +206,11 @@ const TrainerCard = ({ trainer, i }) => {
 }
 
 const gymImages = [
-  'https://images.unsplash.com/photo-1661301057249-bd008eebd06a?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1637430308606-86576d8fef3c?w=600&q=80&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=80&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=600&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1671631630555-1cb3ffa7dfe6?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80&auto=format&fit=crop',
 ]
 
