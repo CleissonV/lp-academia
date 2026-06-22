@@ -312,7 +312,8 @@ export default function App() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="font-display font-black text-2xl tracking-wider">
+          <a href="#" className="flex items-center gap-2 font-display font-black text-2xl tracking-wider">
+            <svg viewBox="0 0 32 32" className="w-6 h-6" fill="#ef233c"><path d="M16 6L4 26h7l5-10 5 10h7z" /></svg>
             <span className="text-white">APEX</span>
             <span className="text-[#ef233c]">.</span>
           </a>
